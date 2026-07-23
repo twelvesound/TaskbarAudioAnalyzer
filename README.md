@@ -4,6 +4,15 @@
 
 透明化したタスクバーの裏に置く、軽量な常駐オーディオアナライザーです。
 
+## ダウンロード
+
+[GitHub Releases](https://github.com/twelvesound/TaskbarAudioAnalyzer/releases/latest)から次のビルド済みZIPをダウンロードできます。
+
+- `TaskbarAudioAnalyzer-*-win-x64.zip`: Windowsアプリ。展開して`TaskbarAudioAnalyzer.exe`を実行してください。[.NET 10 Desktop Runtime（Windows x64）](https://dotnet.microsoft.com/download/dotnet/10.0)が必要です。
+- `TaskbarAudioTap-*-win-x64.zip`: VST3プラグイン。ZIP内の`TaskbarAudioTap.vst3`を`C:\Program Files\Common Files\VST3\12sound`へコピーし、DAWで再スキャンしてください。
+
+配布物は現在コード署名されていないため、初回実行時にWindowsの警告が表示される場合があります。ZIPと一緒に公開される`SHA256SUMS.txt`でファイルを検証できます。
+
 表示:
 
 - `LUFS-S`: ITU-R BS.1770のK-weightingとEBU Tech 3341の3秒窓によるShort-Term LUFS。表示は毎秒5回、0.2 LUのデッドバンド付き
@@ -97,3 +106,5 @@ dotnet build .\src\TaskbarAudioAnalyzer\TaskbarAudioAnalyzer.csproj
 ## ライセンス
 
 このプロジェクトは[MIT License](LICENSE)で公開されています。著作権表示とライセンス文を保持することで、商用・非商用を問わず利用、改変、再配布できます。
+
+配布物に含まれる外部コンポーネントのライセンスは[THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)を参照してください。

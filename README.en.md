@@ -4,6 +4,15 @@
 
 A lightweight resident audio analyzer designed to sit behind a transparent Windows taskbar.
 
+## Downloads
+
+Prebuilt ZIP packages are available from [GitHub Releases](https://github.com/twelvesound/TaskbarAudioAnalyzer/releases/latest).
+
+- `TaskbarAudioAnalyzer-*-win-x64.zip`: Windows application. Extract the ZIP and run `TaskbarAudioAnalyzer.exe`. The [.NET 10 Desktop Runtime for Windows x64](https://dotnet.microsoft.com/download/dotnet/10.0) is required.
+- `TaskbarAudioTap-*-win-x64.zip`: VST3 plug-in. Copy `TaskbarAudioTap.vst3` from the ZIP to `C:\Program Files\Common Files\VST3\12sound`, then rescan plug-ins in your DAW.
+
+The binaries are currently unsigned, so Windows may show a warning on first launch. Use the accompanying `SHA256SUMS.txt` file to verify downloaded files.
+
 Meters:
 
 - `LUFS-S`: Short-Term LUFS using ITU-R BS.1770 K-weighting and the EBU Tech 3341 three-second window. Updated five times per second with a 0.2 LU deadband
@@ -97,3 +106,5 @@ dotnet build .\src\TaskbarAudioAnalyzer\TaskbarAudioAnalyzer.csproj
 ## License
 
 This project is released under the [MIT License](LICENSE). You may use, modify, and redistribute it for commercial or non-commercial purposes as long as the copyright notice and license text are retained.
+
+See [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) for licenses covering third-party components included in binary distributions.

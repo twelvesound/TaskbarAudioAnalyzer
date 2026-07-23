@@ -1,5 +1,7 @@
 ﻿# Taskbar Audio Analyzer
 
+[日本語](README.md) | [English](README.en.md)
+
 透明化したタスクバーの裏に置く、軽量な常駐オーディオアナライザーです。
 
 表示:

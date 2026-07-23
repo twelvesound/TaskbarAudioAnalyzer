@@ -93,3 +93,7 @@ WPFアプリだけをビルドする場合:
 ```powershell
 dotnet build .\src\TaskbarAudioAnalyzer\TaskbarAudioAnalyzer.csproj
 ```
+
+## ライセンス
+
+このプロジェクトは[MIT License](LICENSE)で公開されています。著作権表示とライセンス文を保持することで、商用・非商用を問わず利用、改変、再配布できます。

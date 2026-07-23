@@ -93,3 +93,7 @@ To build only the WPF application:
 ```powershell
 dotnet build .\src\TaskbarAudioAnalyzer\TaskbarAudioAnalyzer.csproj
 ```
+
+## License
+
+This project is released under the [MIT License](LICENSE). You may use, modify, and redistribute it for commercial or non-commercial purposes as long as the copyright notice and license text are retained.

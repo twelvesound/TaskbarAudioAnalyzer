@@ -2,13 +2,13 @@
 
 [日本語](README.md) | [English](README.en.md)
 
-このリポジトリは非公開の開発版です。本体インストーラーは[非公開Release](https://github.com/twelvesound/TaskbarAudioAnalyzer-private/releases/latest)から取得できます（アクセス権が必要です）。以下の公開版ダウンロードは従来のv1.1.0を指します。
-
 透明化したタスクバーの裏に置く、軽量な常駐オーディオアナライザーです。
 
 ## ダウンロード
 
-[GitHub Releases](https://github.com/twelvesound/TaskbarAudioAnalyzer/releases/latest)から次のビルド済みZIPをダウンロードできます。
+[GitHub Releases](https://github.com/twelvesound/TaskbarAudioAnalyzer/releases/latest)からビルド済みの配布物をダウンロードできます。
+
+本体のインストーラーは[本体Release](https://github.com/twelvesound/TaskbarAudioAnalyzer/releases/tag/v1.1.1)から取得できます。従来のポータブルZIPとVST3は[v1.1.0](https://github.com/twelvesound/TaskbarAudioAnalyzer/releases/tag/v1.1.0)から取得できます。
 
 - `TaskbarAudioAnalyzer-*-win-x64.zip`: Windowsアプリ。展開して`TaskbarAudioAnalyzer.exe`を実行してください。[.NET 10 Desktop Runtime（Windows x64）](https://dotnet.microsoft.com/download/dotnet/10.0)が必要です。
 - `TaskbarAudioTap-*-win-x64.zip`: VST3プラグイン。ZIP内の`TaskbarAudioTap.vst3`を`C:\Program Files\Common Files\VST3\12sound`へコピーし、DAWで再スキャンしてください。

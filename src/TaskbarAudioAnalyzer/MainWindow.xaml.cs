@@ -408,8 +408,7 @@ public partial class MainWindow : Window
     {
         try
         {
-            Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.Startup));
-            File.WriteAllText(GetStartupCommandPath(), GetStartupCommandText());
+            StartupRegistration.Enable();
         }
         catch
         {
@@ -424,11 +423,7 @@ public partial class MainWindow : Window
     {
         try
         {
-            var path = GetStartupCommandPath();
-            if (File.Exists(path))
-            {
-                File.Delete(path);
-            }
+            StartupRegistration.Disable();
         }
         catch
         {
@@ -630,30 +625,16 @@ public partial class MainWindow : Window
         }
     }
 
-    private static string GetStartupCommandPath()
-        => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), "TaskbarAudioAnalyzer.cmd");
-
     private static void RefreshStartupCommandIfEnabled()
     {
         try
         {
-            var path = GetStartupCommandPath();
-            if (File.Exists(path))
-            {
-                File.WriteAllText(path, GetStartupCommandText());
-            }
+            StartupRegistration.RefreshIfEnabled();
         }
         catch
         {
             // Startup repair is best-effort on locked-down systems.
         }
-    }
-
-    private static string GetStartupCommandText()
-    {
-        var exePath = Environment.ProcessPath ?? Process.GetCurrentProcess().MainModule?.FileName ?? "";
-        var commandPath = exePath.Replace("%", "%%", StringComparison.Ordinal);
-        return $"@echo off{Environment.NewLine}start \"\" \"{commandPath}\"{Environment.NewLine}";
     }
 
     private static string FormatDecibels(double value)

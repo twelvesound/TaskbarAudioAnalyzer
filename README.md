@@ -2,6 +2,8 @@
 
 [日本語](README.md) | [English](README.en.md)
 
+このリポジトリは非公開の開発版です。本体インストーラーは[非公開Release](https://github.com/twelvesound/TaskbarAudioAnalyzer-private/releases/latest)から取得できます（アクセス権が必要です）。以下の公開版ダウンロードは従来のv1.1.0を指します。
+
 透明化したタスクバーの裏に置く、軽量な常駐オーディオアナライザーです。
 
 ## ダウンロード
@@ -21,7 +23,31 @@
 - Spectrum: 約60Hz〜16kHzを28本に分けた対数スペクトラム
 - 入力状態: `WIN`、`VST`、またはAuto Mix中の`WIN+VST`
 
-起動:
+## 本体のインストールと配置
+
+本体用の `TaskbarAudioAnalyzer-v1.1.1-win-x64-Setup.exe` を実行すると、Taskbar Underlay Monitorと同じくアプリとユーザー設定を分離して配置します。
+
+- 本体: `C:\Program Files\TaskbarAudioAnalyzer\TaskbarAudioAnalyzer.exe`
+- 設定: `%LOCALAPPDATA%\12sound\TaskbarAudioAnalyzer\settings.json`（従来の場所を継続使用）
+- スタートメニュー: `Taskbar Audio Analyzer`
+
+セットアップは管理者権限と [.NET 10 Desktop Runtime（Windows x64）](https://dotnet.microsoft.com/download/dotnet/10.0) が必要です。ランタイム未導入の場合は案内して中止します。実行中の本体はメニューの `Exit` で終了してからインストールしてください。VST3はこのセットアップに含まれません。
+
+既存の設定と自動起動のON/OFFを保持し、有効な自動起動はProgram Filesの本体へ更新します。新規に自動起動を有効にする場合は本体メニューの `Enable startup` を使ってください。Windowsの「インストールされているアプリ」からアンインストールできます。ユーザー設定は再導入に備えて残します。別のWindowsユーザーの自動起動登録は、そのユーザーで `Disable startup` を選択して解除してください。
+
+ソースから本体インストーラーを作る場合（.NET 10 SDKと [Inno Setup](https://jrsoftware.org/isdl.php) 6.7.3以降が必要）:
+
+```powershell
+.\scripts\Build-Installer.ps1
+# コンパイラーの場所を指定する場合:
+.\scripts\Build-Installer.ps1 -IsccPath 'C:\Program Files (x86)\Inno Setup 6\ISCC.exe'
+# ビルドしてセットアップ画面を開く場合:
+.\scripts\Install-ProgramFiles.ps1
+```
+
+生成先は `artifacts\installer\v1.1.1\` です。Setup.exeと`SHA256SUMS.txt`を生成します。VST3のSDKは不要です。
+
+## 起動
 
 ```powershell
 git clone https://github.com/twelvesound/TaskbarAudioAnalyzer.git
@@ -30,6 +56,8 @@ cd TaskbarAudioAnalyzer
 ```
 
 必要環境はWindows 10以降と.NET 10 SDKです。
+
+`Start-Analyzer.ps1`はインストール済みのProgram Files版を優先します。開発用ビルドを実行する場合は `-Development` を付けてください（実行中の本体は先に終了してください）。開発版を実行しても、Program Files版が存在する限り自動起動先はインストール版のままです。
 
 操作:
 

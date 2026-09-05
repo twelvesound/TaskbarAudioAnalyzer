@@ -1,12 +1,15 @@
 param(
     [ValidatePattern('^\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?$')]
-    [string]$Version = "1.1.0"
+    [string]$Version
 )
 
 $ErrorActionPreference = "Stop"
 
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $project = Join-Path $projectRoot "src\TaskbarAudioAnalyzer\TaskbarAudioAnalyzer.csproj"
+if (-not $Version) {
+    $Version = ([xml](Get-Content -LiteralPath $project -Raw)).Project.PropertyGroup.Version
+}
 $vst3Bundle = Join-Path $projectRoot "artifacts\build\vst3-release\VST3\Release\TaskbarAudioTap.vst3"
 $releaseParent = [IO.Path]::GetFullPath((Join-Path $projectRoot "artifacts\release"))
 $releaseRoot = [IO.Path]::GetFullPath((Join-Path $releaseParent "v$Version"))

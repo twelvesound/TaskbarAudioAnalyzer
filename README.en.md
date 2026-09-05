@@ -2,6 +2,8 @@
 
 [日本語](README.md) | [English](README.en.md)
 
+This repository contains private development work. The application installer is available from [private Releases](https://github.com/twelvesound/TaskbarAudioAnalyzer-private/releases/latest) (repository access required). The public downloads below refer to the existing v1.1.0 release.
+
 A lightweight resident audio analyzer designed to sit behind a transparent Windows taskbar.
 
 ## Downloads
@@ -21,6 +23,30 @@ Meters:
 - Spectrum: 28 logarithmically spaced bands covering approximately 60 Hz to 16 kHz
 - Input status: `WIN`, `VST`, or `WIN+VST` while using Auto Mix
 
+## Application installation and layout
+
+Run `TaskbarAudioAnalyzer-v1.1.1-win-x64-Setup.exe` to install the app separately from user settings, using the same layout as Taskbar Underlay Monitor:
+
+- Application: `C:\Program Files\TaskbarAudioAnalyzer\TaskbarAudioAnalyzer.exe`
+- Settings: `%LOCALAPPDATA%\12sound\TaskbarAudioAnalyzer\settings.json` (unchanged)
+- Start menu shortcut: `Taskbar Audio Analyzer`
+
+Setup requires administrator permission and the [.NET 10 Desktop Runtime for Windows x64](https://dotnet.microsoft.com/download/dotnet/10.0). It stops with instructions if the runtime is missing. Choose `Exit` in the app menu before installing. This installer does not include the VST3 plug-in.
+
+Existing settings and startup preferences are preserved. An enabled startup entry is updated to the installed app. Use `Enable startup` in the app menu to enable it on a new installation. Uninstall through Windows Settings > Installed apps; user settings are retained for reinstallation. Other Windows users should remove their own startup entry using `Disable startup` before uninstalling.
+
+To build the installer from source, install the .NET 10 SDK and [Inno Setup](https://jrsoftware.org/isdl.php) 6.7.3 or later:
+
+```powershell
+.\scripts\Build-Installer.ps1
+# Optionally provide the compiler location:
+.\scripts\Build-Installer.ps1 -IsccPath 'C:\Program Files (x86)\Inno Setup 6\ISCC.exe'
+# Build and open the setup wizard:
+.\scripts\Install-ProgramFiles.ps1
+```
+
+The setup executable and `SHA256SUMS.txt` are generated in `artifacts\installer\v1.1.1\`. Building this installer does not require the VST3 SDK.
+
 ## Getting started
 
 ```powershell
@@ -30,6 +56,8 @@ cd TaskbarAudioAnalyzer
 ```
 
 Requirements: Windows 10 or later and the .NET 10 SDK.
+
+`Start-Analyzer.ps1` prefers the installed Program Files version. Pass `-Development` to build and run the development version (exit the running app first). Development launches keep startup pointing to Program Files while the installed app exists.
 
 ## Controls
 
